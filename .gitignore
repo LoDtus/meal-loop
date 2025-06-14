@@ -14,7 +14,7 @@ Thumbs.db
 
 # === NEXT.JS ===
 mealloop-web/node_modules/
-mealloop-web/package-log.json
+mealloop-web/package-lock.json
 mealloop-web/*.txt
 mealloop-web/*.md
 mealloop-web/.pnp/
