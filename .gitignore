@@ -66,5 +66,36 @@ mealloop_mobile/android/app/profile/
 mealloop_mobile/android/app/release/
 mealloop_mobile/android/.gradle/
 
-# === SPRING BOOT (server) ===
-# ... chưa có, do chưa thống nhất cấu trúc thư mục
+# === SERVER ===
+# --- SPRING BOOT ---
+# mealloop-server/gateway
+mealloop-server/gateway/*.md
+mealloop-server/gateway/*.txt
+mealloop-server/gateway/.env
+mealloop-server/gateway/.env.*
+mealloop-server/gateway/target/
+mealloop-server/gateway/.mvn/wrapper/maven-wrapper.jar
+!mealloop-server/gateway/**/src/main/**/target/
+!mealloop-server/gateway/**/src/test/**/target/
+mealloop-server/gateway/.apt_generated
+mealloop-server/gateway/.classpath
+mealloop-server/gateway/.factorypath
+mealloop-server/gateway/.project
+mealloop-server/gateway/.settings
+mealloop-server/gateway/.springBeans
+mealloop-server/gateway/.sts4-cache
+mealloop-server/gateway/.idea/
+mealloop-server/gateway/*.iws
+mealloop-server/gateway/*.iml
+mealloop-server/gateway/*.ipr
+mealloop-server/gateway/nbproject/private/
+mealloop-server/gateway/nbbuild/
+mealloop-server/gateway/dist/
+mealloop-server/gateway/nbdist/
+mealloop-server/gateway/.nb-gradle/
+mealloop-server/gateway/build/
+!mealloop-server/gateway/**/src/main/**/build/
+!mealloop-server/gateway/**/src/test/**/build/
+mealloop-server/gateway/.vscode/
+
+# mealloop-server/services/
