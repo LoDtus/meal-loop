@@ -1,0 +1,55 @@
+name: mealloop_mobile
+description: "MealLoop Application"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.5.2
+  flutter_native_splash: ^2.4.6
+  smooth_page_indicator: ^1.2.1
+  dio: ^5.8.0+1
+  flutter_riverpod: ^2.6.1
+  velocity_x: ^4.3.1
+  camera: ^0.11.1
+  # flutter_secure_storage: thêm để lưu dữ liệu nhạy cảm
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/branding/
+    - assets/icons/
+    - assets/images/
+
+# Sử dụng logo tròn thật sự, phần nền png phía sau cũng phải vuông tỉ lệ 1:1
+# Nếu không có logo tròn thì phải đảm bảo việc logo không bị méo trên android 12+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+
+  color: "#ffffff"
+  image: assets/branding/test-logo.png
+  background_image: assets/branding/background.png
+  branding: assets/branding/branding.png
+  # branding_bottom_padding: 24
+
+  color_dark: "#121212"
+  image_dark: assets/branding/test-logo.png
+  branding_dark: assets/branding/branding_dark.png
+
+  android_12:
+    image: assets/branding/test-logo.png
+    icon_background_color: "#ffffff"
+
+    image_dark: assets/branding/test-logo.png
+    icon_background_color_dark: "#121212"
