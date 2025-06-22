@@ -1,0 +1,18 @@
+{
+    "globalNotification": {
+        "success": "Success",
+        "warning": "Warning",
+        "error": "Error",
+        "info": "Notification"
+    },
+    "leftSide": {
+        "explore": "Explore",
+        "shop": "Store",
+        "activity": "Activities",
+        "saved": "Saved",
+        "trash": "Deleted"
+    },
+    "rightSide": {
+        "friends": "Your friends"
+    }
+}

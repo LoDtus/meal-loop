@@ -1,0 +1,23 @@
+{
+    "globalNotification": {
+        "success": "Thành công",
+        "warning": "Cảnh báo",
+        "error": "Lỗi",
+        "info": "Thông báo"
+    },
+    "header": {
+        "searchPlaceholder": "Tìm kiếm",
+        "notification": "Thông báo",
+        "profile": "Thông tin cá nhân"
+    },
+    "leftSide": {
+        "explore": "Khám phá",
+        "shop": "Cửa hàng",
+        "activity": "Hoạt động",
+        "saved": "Đã lưu",
+        "trash": "Đã xóa"
+    },
+    "rightSide": {
+        "friends": "Bạn bè"
+    }
+}

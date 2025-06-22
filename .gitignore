@@ -11,6 +11,16 @@ Thumbs.db
 .env
 .env.*
 *.pem
+application*.yml
+application*.properties
+target/
+*.class
+*.jar
+*.war
+*.ear
+.idea/
+*.iml
+.vscode/
 
 # === NEXT.JS ===
 mealloop-web/node_modules/

@@ -1,0 +1,38 @@
+/* Left Side */
+.leftSide {
+    direction: rtl;
+}
+.leftSide > * {
+    direction: ltr;
+}
+.leftSide::-webkit-scrollbar {
+    width: 3px;
+}
+.leftSide::-webkit-scrollbar-track {
+    background: #f2f2f2;
+    border-radius: 10px;
+}
+.leftSide::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 10px;
+}
+.leftSide::-webkit-scrollbar-thumb:hover {
+    background: #8b8b8b;
+}
+
+/* Right Side */
+.rightSide::-webkit-scrollbar {
+    width: 8px;
+}
+.rightSide::-webkit-scrollbar-track {
+    background: #f2f2f2;
+    border-radius: 10px;
+}
+.rightSide::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 10px;
+    border: 2px solid #f2f2f2;
+}
+.rightSide::-webkit-scrollbar-thumb:hover {
+    background: #8b8b8b;
+}
