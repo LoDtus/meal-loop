@@ -16,7 +16,6 @@ import propertiesSlice from '../redux/slices/propertiesSlices';
 import ProfileMenu from "@/fragments/profile/components/ProfileMenu";
 import NotificationMenu from "@/fragments/notification/NotificationMenu";
 import CartMenu from "@/fragments/cart/components/CartMenu";
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 import Footer from "@/fragments/shared-ui/Footer";
 
 type ReduxProviderProps = {
@@ -58,12 +57,6 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
                 ? <> { children } </>
                 : <>
                     <Header/>
-                    <ProgressBar
-                        height="4px"
-                        color="#00bfff"
-                        options={{ showSpinner: true }}
-                        shallowRouting
-                    />
                     <div className="flex" style={{ marginTop: headerHeight }}>
                         <LeftSide/>
                         {/* <div style={{ minWidth: `${sideWidth}px` }}></div> */}

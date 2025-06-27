@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "../style.css";
 import MediaGridView from "./MediaGridView";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 

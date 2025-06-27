@@ -2,10 +2,11 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { RootState } from "@/lib/redux/store"
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRouter } from 'nextjs-toploader/app';
 
 const TABS = [
     { id: "all", label: "Tất cả" },
