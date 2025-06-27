@@ -14,6 +14,7 @@
     --color-soft-gray: #e6e6e6;
     --color-light-gray: #f2f2f2;
     --color-dark-gray: #7D7D7D;
+    --color-gray-icon: #888888;
     --color-gray-line: #d9d9d9;
     --color-gray-hover: #f2f2f2;
     --color-dark-gray-hover: #e6e6e6;
@@ -25,22 +26,10 @@
     --color-light-green: #76e874;
 }
 
-button {
-    cursor: pointer;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-.main::-webkit-scrollbar {
-    width: 8px;
-}
-.main::-webkit-scrollbar-track {
-    background: #f2f2f2;
-    border-radius: 10px;
-}
-.main::-webkit-scrollbar-thumb {
-    background: #bdbdbd;
-    border-radius: 10px;
-    border: 2px solid #f2f2f2;
-}
-.main::-webkit-scrollbar-thumb:hover {
-    background: #8b8b8b;
+button {
+    cursor: pointer;
 }

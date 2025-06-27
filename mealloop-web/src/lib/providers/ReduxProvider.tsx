@@ -13,6 +13,11 @@ import LeftSide from '@/fragments/shared-ui/LeftSide';
 import Header from '@/fragments/shared-ui/Header';
 import { useWindowDimensions } from '../hooks/commonHooks';
 import propertiesSlice from '../redux/slices/propertiesSlices';
+import ProfileMenu from "@/fragments/profile/components/ProfileMenu";
+import NotificationMenu from "@/fragments/notification/NotificationMenu";
+import CartMenu from "@/fragments/cart/components/CartMenu";
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import Footer from "@/fragments/shared-ui/Footer";
 
 type ReduxProviderProps = {
     children: ReactNode;
@@ -26,6 +31,9 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
     const isLoading = useSelector((state: RootState) => state.properties.isLoadingOverlay);
     const headerHeight = useSelector((state: RootState) => state.properties.headerHeight);
     const sideWidth = useSelector((state: RootState) => state.properties.sideWidth);
+    const openCartMenu = useSelector((state: RootState) => state.properties.openCartMenu);
+    const openNotifycationMenu = useSelector((state: RootState) => state.properties.openNotifycationMenu);
+    const openProfileMenu = useSelector((state: RootState) => state.properties.openProfileMenu);
 
     const language = useSelector((state: RootState) => state.setting.language);
     const messages = language === "vi" ? viMessages : enMessages;
@@ -33,10 +41,6 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
     useEffect(() => {
         dispatch(propertiesSlice.actions.setSideWidth(260));
     }, []);
-
-    useEffect(() => {
-        console.log(width);
-    }, [width]);
 
     // useEffect(() => {
     //     connectWS(profile, dispatch);
@@ -54,16 +58,32 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
                 ? <> { children } </>
                 : <>
                     <Header/>
-                    <div
-                        className='flex justify-between'
-                        style={{ marginTop: headerHeight }}
-                    >
+                    <ProgressBar
+                        height="4px"
+                        color="#00bfff"
+                        options={{ showSpinner: true }}
+                        shallowRouting
+                    />
+                    <div className="flex" style={{ marginTop: headerHeight }}>
                         <LeftSide/>
-                        <div style={{ minWidth: `${sideWidth}px` }}></div>
-                        { children }
-                        <div style={{ minWidth: `${sideWidth}px` }}></div>
+                        {/* <div style={{ minWidth: `${sideWidth}px` }}></div> */}
+                        <div
+                            className="w-full flex flex-col"
+                            style={{
+                                paddingLeft: `${sideWidth}px`,
+                                paddingRight: `${sideWidth + 1}px`,
+                            }}
+                        >
+                            { children }
+                            <Footer/>
+                        </div>
+                        {/* <div style={{ minWidth: `${sideWidth}px` }}></div> */}
                         <RightSide/>
                     </div>
+
+                    { openCartMenu && <CartMenu headerHeight={headerHeight}/> }
+                    { openNotifycationMenu && <NotificationMenu headerHeight={headerHeight}/> }
+                    { openProfileMenu && <ProfileMenu headerHeight={headerHeight}/> }
                 </>
             }
         </NextIntlClientProvider>

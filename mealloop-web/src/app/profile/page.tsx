@@ -1,8 +1,10 @@
 "use client";
-import ProfileLayout from "@/fragments/profile/ProfileLayout";
+import { redirect } from "next/navigation";
 
 export default function ProfilePage() {
+    // redirect("/profile/posts");
+
     return (
-        <ProfileLayout/>
+        <div>Profile layout</div>
     );
 };

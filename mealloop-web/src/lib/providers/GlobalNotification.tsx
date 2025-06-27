@@ -30,7 +30,7 @@ export default function GlobalNotification({ children }: GlobalNotificationProvi
     );
 };
 
-export function useGlobalNotification() {
+export const useGlobalNotification = () => {
     const context = useContext(NotificationContext);
 
     if (!context) {

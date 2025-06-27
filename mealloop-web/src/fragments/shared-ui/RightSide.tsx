@@ -16,7 +16,7 @@ export default function RightSide() {
 
     return (
         <div
-            className="rightSide fixed right-0 bg-white overflow-y-auto
+            className="rightSide z-10 fixed right-0 bg-white overflow-y-auto
             flex flex-col flex-shrink-0 p-2 border-l border-gray-line"
             style={{
                 width: `${sideWidth}px`,

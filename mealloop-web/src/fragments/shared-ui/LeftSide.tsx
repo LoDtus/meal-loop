@@ -20,7 +20,7 @@ export default function LeftSide() {
     }, [pathname]);
 
     return (
-        <div className="leftSide fixed left-0 bg-white overflow-y-auto
+        <div className="leftSide z-10 fixed left-0 bg-white overflow-y-auto
             flex flex-col flex-shrink-0 p-2 border-r border-gray-line"
             style={{
                 width: `${sideWidth}px`, 

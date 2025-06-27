@@ -18,11 +18,13 @@ import messageSlice from './slices/messageSlices';
 import notificationSlice from './slices/notificationSlices';
 import chatRoomSlice from './slices/chatRoomSlices';
 import cartSlice from './slices/cartSlices';
+import postSlice from './slices/postSlices';
 
 const appReducer = combineReducers({
     profile: profileSlice.reducer,
     properties: propertiesSlice.reducer,
     setting: settingSlice.reducer,
+    post: postSlice.reducer,
     search: searchSlice.reducer,
     chatRoom: chatRoomSlice.reducer,
     message: messageSlice.reducer,
@@ -30,9 +32,9 @@ const appReducer = combineReducers({
     cart: cartSlice.reducer,
 });
 
-function createStorage() {
+const createStorage = () => {
     return {
-        getItem: async (key: string) => {
+        getItem: async(key: string) => {
             if (typeof window === 'undefined') {
                 return null; // Trả về null trong SSR
             }
@@ -40,7 +42,7 @@ function createStorage() {
             const storage = rememberMe ? localStorage : sessionStorage;
             return storage.getItem(key);
         },
-        setItem: async (key: string, value: string) => {
+        setItem: async(key: string, value: string) => {
             if (typeof window === 'undefined') {
                 return; // Không lưu trong SSR
             }
@@ -48,7 +50,7 @@ function createStorage() {
             const storage = rememberMe ? localStorage : sessionStorage;
             storage.setItem(key, value);
         },
-        removeItem: async (key: string) => {
+        removeItem: async(key: string) => {
             if (typeof window === 'undefined') {
                 return; // Không xóa trong SSR
             }

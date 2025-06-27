@@ -12,7 +12,7 @@ export default function SearchMain() {
     const [text, setText] = useState("");
     const router = useRouter();
 
-    function startSearch() {
+    const startSearch = () => {
         console.log(1);
         router.push("/search");
     };

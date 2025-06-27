@@ -1,0 +1,7 @@
+.masonry-item h2 {
+    text-decoration-color: rgba(224, 172, 51, 0);
+}
+.masonry-item:hover h2 {
+    color: rgb(224, 172, 51);
+    text-decoration-color: rgba(224, 172, 51, 1);
+}

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
 // Theo dõi kích thước của màn hình
-export function useWindowDimensions() {
+export const useWindowDimensions = () => {
     const [windowDimensions, setWindowDimensions] = useState({
         width: 0,
         height: 0,
     });
 
     useEffect(() => {
-        function handleResize() {
+        const handleResize = () => {
             setWindowDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight,
+                width: document.documentElement.clientWidth,
+                height: document.documentElement.clientHeight,
             });
         }
 
@@ -27,4 +27,4 @@ export function useWindowDimensions() {
     }, []);
 
     return windowDimensions;
-}
+};

@@ -4,20 +4,20 @@ import type { NotificationInstance } from 'antd/es/notification/interface';
 let notificationApi: NotificationInstance | null = null;
 let t: ((key: string) => string) | null = null;
 
-export function setNotificationApi(api: NotificationInstance) {
+export const setNotificationApi = (api: NotificationInstance) => {
     notificationApi = api;
 };
 
-export function setTranslationFn(translateFn: (key: string) => string) {
+export const setTranslationFn = (translateFn: (key: string) => string) => {
     t = translateFn;
 };
 
-export function pushNotify(
+export const pushNotify = (
     type: 'success' | 'error' | 'warning' | 'info',
     description: string,
     placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' = 'topRight',
     messageNotify: string | null
-) {
+) => {
     if (!notificationApi) return;
 
     const message = messageNotify
