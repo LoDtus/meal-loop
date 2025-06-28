@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import enMessages from "@/lib/configs/en-language.json";
 import viMessages from "@/lib/configs/vi-language.json";
 import type { RootState } from '@/lib/redux/store';
-import LoadingOverlay from '@/fragments/shared-ui/LoadingOverlay';
 import { usePathname } from 'next/navigation';
 import RightSide from '@/fragments/shared-ui/RightSide';
 import LeftSide from '@/fragments/shared-ui/LeftSide';
@@ -17,6 +16,7 @@ import ProfileMenu from "@/fragments/profile/components/ProfileMenu";
 import NotificationMenu from "@/fragments/notification/NotificationMenu";
 import CartMenu from "@/fragments/cart/components/CartMenu";
 import Footer from "@/fragments/shared-ui/Footer";
+import { PATHNAME_WITHOUT_FOOTER } from "../configs/contants";
 
 type ReduxProviderProps = {
     children: ReactNode;
@@ -27,7 +27,6 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
     const dispatch = useDispatch();
     const { width } = useWindowDimensions();
 
-    const isLoading = useSelector((state: RootState) => state.properties.isLoadingOverlay);
     const headerHeight = useSelector((state: RootState) => state.properties.headerHeight);
     const sideWidth = useSelector((state: RootState) => state.properties.sideWidth);
     const openCartMenu = useSelector((state: RootState) => state.properties.openCartMenu);
@@ -36,6 +35,10 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
 
     const language = useSelector((state: RootState) => state.setting.language);
     const messages = language === "vi" ? viMessages : enMessages;
+
+    const isHideFooter = PATHNAME_WITHOUT_FOOTER.some(path =>
+        pathname === path || pathname.startsWith(path + "/")
+    );  
 
     useEffect(() => {
         dispatch(propertiesSlice.actions.setSideWidth(260));
@@ -50,8 +53,6 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
 
     return (
         <NextIntlClientProvider locale={language} messages={messages}>
-            { isLoading && <LoadingOverlay/>}
-
             {
                 pathname.startsWith("/auth")
                 ? <> { children } </>
@@ -68,7 +69,7 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
                             }}
                         >
                             { children }
-                            <Footer/>
+                            { !isHideFooter ? <Footer/> : null }
                         </div>
                         {/* <div style={{ minWidth: `${sideWidth}px` }}></div> */}
                         <RightSide/>

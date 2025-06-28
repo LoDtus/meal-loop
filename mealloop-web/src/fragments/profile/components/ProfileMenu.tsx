@@ -12,11 +12,6 @@ export default function ProfileMenu({ headerHeight }) {
     const router = useRouter();
     const dispatch = useDispatch();
 
-    const handleRouter = (page: string) => {
-        router.push(page);
-        dispatch(propertiesSlice.actions.setLoadingOverlay(true));
-    }
-
     return (
         <div className="z-20 absolute top-0 right-2 p-2 bg-white border border-gray-line rounded-md shadow-lg"
             style={{ marginTop: `${headerHeight - 10}px`}}
@@ -24,7 +19,7 @@ export default function ProfileMenu({ headerHeight }) {
             <button
                 className="w-full px-3 py-1 mb-1 rounded-md flex items-center border
                 duration-200 active:scale-90"
-                onClick={() => handleRouter("/profile/username/user-123/all")}
+                onClick={() => router.push("/profile/username/user-123/all")}
             >
                 <img
                     className="w-[40px] aspect-square rounded-full"
@@ -50,7 +45,7 @@ export default function ProfileMenu({ headerHeight }) {
             <button
                 className="w-full px-3 py-2 mb-1 rounded-md flex items-center border
                 duration-200 active:scale-90"
-                onClick={() => handleRouter("/setting")}
+                onClick={() => router.push("/setting")}
             >
                 <Settings size={18} color="black"/>
                 <span className="font-semibold mx-2 grow-1 text-left">Cài đặt</span>
