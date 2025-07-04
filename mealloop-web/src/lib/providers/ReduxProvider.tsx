@@ -28,6 +28,7 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
     const { width } = useWindowDimensions();
 
     const headerHeight = useSelector((state: RootState) => state.properties.headerHeight);
+    const distanceFromRightHeader = useSelector((state: RootState) => state.properties.distanceFromRightHeader);
     const sideWidth = useSelector((state: RootState) => state.properties.sideWidth);
     const openCartMenu = useSelector((state: RootState) => state.properties.openCartMenu);
     const openNotifycationMenu = useSelector((state: RootState) => state.properties.openNotifycationMenu);
@@ -75,7 +76,7 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
                         <RightSide/>
                     </div>
 
-                    { openCartMenu && <CartMenu headerHeight={headerHeight}/> }
+                    { openCartMenu && <CartMenu headerHeight={headerHeight} distanceFromRightHeader={distanceFromRightHeader}/> }
                     { openNotifycationMenu && <NotificationMenu headerHeight={headerHeight}/> }
                     { openProfileMenu && <ProfileMenu headerHeight={headerHeight}/> }
                 </>

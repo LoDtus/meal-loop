@@ -38,3 +38,35 @@ export const TextMessage = ({
         </div>
     );
 };
+
+export const ImageMessage = () => {
+    return (
+        <div>
+
+        </div>
+    );
+};
+
+export const VideoMessage = () => {
+    return (
+        <div>
+
+        </div>
+    );
+};
+
+export const FileMessage = () => {
+    return (
+        <div>
+
+        </div>
+    );
+};
+
+export const SharedContentMessage = () => {
+    return (
+        <div>
+
+        </div>
+    );
+};
