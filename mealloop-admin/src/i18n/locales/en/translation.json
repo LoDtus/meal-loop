@@ -1,0 +1,18 @@
+{
+    "navigation": {
+        "dashboard": "Dashboard",
+        "hrm": "Human Resources",
+        "chat": "Message",
+        "userManagement": "User Management",
+        "storeManagement": "Store Management",
+        "productManagement": "Product Management",
+        "voucherManagement": "Voucher Management",
+        "notificationManagement": "Notifications",
+        "support": "Support",
+        "activities": "Activities",
+        "report": "Report",
+        "trash": "Trash",
+        "setting": "Setting",
+        "profile": "Profile"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "navigation": {
+        "dashboard": "Tổng quan",
+        "hrm": "Nhân sự",
+        "chat": "Tin nhắn",
+        "userManagement": "Quản lý người dùng",
+        "storeManagement": "Quản lý cửa hàng",
+        "productManagement": "Quản lý sản phẩm",
+        "voucherManagement": "Quản lý mã giảm giá",
+        "notificationManagement": "Quản lý thông báo",
+        "support": "Hỗ trợ",
+        "activities": "Lịch sử hoạt động",
+        "report": "Báo cáo",
+        "trash": "Đã xóa",
+        "setting": "Cài đặt",
+        "profile": "Thông tin cá nhân"
+    }
+}

@@ -1,0 +1,8 @@
+.MuiTable-root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.css-1sympa5-MuiTableContainer-root {
+    flex-grow: 1;
+}
