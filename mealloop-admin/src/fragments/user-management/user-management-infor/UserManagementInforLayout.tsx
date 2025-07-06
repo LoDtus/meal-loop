@@ -1,10 +1,10 @@
-import "./styles.css";
+import "../styles.css";
 import { useEffect, useState } from "react";
 import { MaterialReactTable } from "material-react-table";
 import { MRT_Localization_VI } from "material-react-table/locales/vi";
 import { MRT_Localization_EN } from "material-react-table/locales/en";
 
-export default function UserManagementLayout() {
+export default function UserManagementInforLayout() {
     // Trạng thái để theo dõi ngôn ngữ hiện tại (vi hoặc en)
     const [language, setLanguage] = useState("vi");
     const [rowData, setRowData] = useState([]);

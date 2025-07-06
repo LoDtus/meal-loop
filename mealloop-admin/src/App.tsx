@@ -6,11 +6,12 @@ import SignIn from './fragments/auth/components/SignIn';
 import ForgotPassword from './fragments/auth/components/ForgotPassword';
 import ResetPassword from './fragments/auth/components/ResetPassword';
 import RootLayout from './fragments/shared-ui/RootLayout';
-import UserManagementLayout from './fragments/user-management/UserManagementLayout';
 import ProfileLayout from './fragments/profile/ProfileLayout';
 import DashboardLayout from './fragments/dashboard/DashboardLayout';
 import HRMLayout from './fragments/human-resources-management/HRMLayout';
 import SettingLayout from './fragments/setting/SettingLayout';
+import UserManagementInforLayout from './fragments/user-management/user-management-infor/UserManagementInforLayout';
+import UserManagementReportLayout from './fragments/user-management/user-management-report/UserManagementReportLayout';
 
 export default function App() {
     const navigate = useNavigate();
@@ -52,7 +53,11 @@ export default function App() {
                     <Route path="dashboard" element={ <DashboardLayout/> }/>
                     <Route path="hrm" element={ <HRMLayout/> }/>
                     <Route path="chat" element={ <HRMLayout/> }/>
-                    <Route path="user-management" element={ <UserManagementLayout/> }/>
+                    <Route path="user-management">
+                        <Route index element={ <UserManagementInforLayout/> }/> 
+                        <Route path="infor" element={ <UserManagementInforLayout/> }/>
+                        <Route path="report" element={ <UserManagementReportLayout/> }/>
+                    </Route>
                     <Route path="store-management" element={ <HRMLayout/> }/>
                     <Route path="product-management" element={ <HRMLayout/> }/>
                     <Route path="voucher-management" element={ <HRMLayout/> }/>

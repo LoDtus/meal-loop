@@ -4,6 +4,8 @@
         "hrm": "Nhân sự",
         "chat": "Tin nhắn",
         "userManagement": "Quản lý người dùng",
+        "userManagement_infor": "Thông tin người dùng",
+        "userManagement_report": "Báo cáo người dùng",
         "storeManagement": "Quản lý cửa hàng",
         "productManagement": "Quản lý sản phẩm",
         "voucherManagement": "Quản lý mã giảm giá",
