@@ -1,0 +1,205 @@
+.nav-input:checked ~ aside .nav-badge-right {
+    animation: showBadgeRight 0.3s ease-in-out forwards;
+}
+.nav-input:not(:checked) ~ aside .nav-badge-right {
+    animation: hideBadgeRight 0.3s ease-in-out forwards;
+}
+@keyframes showBadgeRight {
+    0% {
+        display: none;
+        opacity: 0;
+    } 1% {
+        display: block;
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+@keyframes hideBadgeRight {
+    0% {
+        opacity: 1;
+    } 60% {
+        opacity: 0;
+    } 61% {
+        display: none;
+        opacity: 0;
+    } 100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.nav-input:not(:checked) ~ aside .nav-badge-float {
+    animation: showBadgeFloat 0.3s ease-in-out forwards;
+}
+.nav-input:checked ~ aside .nav-badge-float {
+    animation: hideBadgeFloat 0.3s ease-in-out forwards;
+}
+@keyframes showBadgeFloat {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+@keyframes hideBadgeFloat {
+    from {
+        opacity: 1;
+    } to {
+        opacity: 0;
+    }
+}
+
+.nav-input:checked ~ aside .nav-tab-text {
+    animation: showTabText 0.3s ease-in-out forwards;
+}
+.nav-input:not(:checked) ~ aside .nav-tab-text {
+    animation: hideTabText 0.3s ease-in-out forwards;
+}
+@keyframes showTabText {
+    from {
+        display: none;
+        max-width: 0%;
+    } to {
+        max-width: 100%;
+    }
+}
+@keyframes hideTabText {
+    0% {
+        max-width: 100%;
+    } 99% {
+        max-width: 0;
+        display: none;
+    } 100% {
+        max-width: 0;
+        display: none;
+    }
+}
+
+.nav-input:checked ~ aside {
+    animation: showAside 0.3s ease-in-out forwards;
+}
+.nav-input:not(:checked) ~ aside {
+    animation: hideAside 0.3s ease-in-out forwards;
+}
+@keyframes showAside {
+    from {
+        max-width: 10%;
+    } to {
+        max-width: 100%;
+    }
+}
+@keyframes hideAside {
+    from {
+        max-width: 100%;
+    } to {
+        max-width: 8%;
+    }
+}
+
+.nav-input:checked ~ aside .nav-title {
+    animation: showTitle 0.3s ease-in-out forwards;
+}
+.nav-input:not(:checked) ~ aside .nav-title {
+    animation: hideTitle 0.3s ease-in-out forwards;
+}
+@keyframes showTitle {
+    0% {
+        opacity: 0;
+        max-width: 0;
+        display: none;
+        margin-left: -25px;
+    } 20% {
+        opacity: 0;
+        max-width: 0;
+        margin-left: 0;
+    } 100% {
+        opacity: 1;
+        max-width: 100%;
+    }
+}
+@keyframes hideTitle {
+    0% {
+        opacity: 1;
+        max-width: 100%;
+        margin-left: 0;
+    } 99% {
+        opacity: 0;
+        max-width: 0;
+        display: none;
+        margin-left: -25px;
+    } 100% {
+        opacity: 0;
+        max-width: 0;
+        display: none;
+    }
+}
+
+.nav-input:checked ~ aside .nav-profile-infor span {
+    animation: showProfileInfor 0.3s ease-in-out forwards;
+}
+.nav-input:not(:checked) ~ aside .nav-profile-infor span {
+    animation: hideProfileInfor 0.3s ease-in-out forwards;
+}
+@keyframes showProfileInfor {
+    0% {
+        display: none;
+        opacity: 0;
+        max-width: 0;
+    } 60% {
+        opacity: 0;
+        max-width: 0;
+    } 61% {
+        opacity: 1;
+        max-width: 0;
+    } 100% {
+        opacity: 1;
+        max-width: 100%;
+    }
+}
+@keyframes hideProfileInfor {
+    0% {
+        opacity: 1;
+        max-width: 100%;
+    } 50% {
+        opacity: 0;
+        max-width: 0;
+    } 51% {
+        opacity: 0;
+        max-width: 0;
+        display: none;
+    } 100% {
+        opacity: 0;
+        max-width: 0;
+        display: none;
+    }
+}
+
+.nav-input:checked ~ aside .nav-profile-img {
+    animation: moveProfileToRight 0.3s ease-in-out forwards;
+}
+.nav-input:not(:checked) ~ aside .nav-profile-img {
+    animation: moveProfileToLeft 0.3s ease-in-out forwards;
+}
+@keyframes moveProfileToRight {
+    0% {
+        opacity: 1;
+    } 20% {
+        opacity: 0;
+    } 90% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+@keyframes moveProfileToLeft {
+    0% {
+        opacity: 1;
+    } 30% {
+        opacity: 0;
+    } 70% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}

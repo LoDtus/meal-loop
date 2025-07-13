@@ -1,7 +1,7 @@
-export default function NoAccess() {
+export default function NoAccessPage() {
     return (
         <div>
-
+            no access
         </div>
     );
 };

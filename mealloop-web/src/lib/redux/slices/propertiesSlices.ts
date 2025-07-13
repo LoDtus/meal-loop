@@ -13,6 +13,7 @@ const propertiesSlice = createSlice({
     name: 'properties',
     initialState: {
         sideWidth: 0,
+        openAuth: false,
 
         // Header
         headerHeight: 0,
@@ -27,6 +28,9 @@ const propertiesSlice = createSlice({
         },
         setHeaderHeight: (state, action) => {
             state.headerHeight = action.payload;
+        },
+        setOpenAuth: (state, action) => {
+            state.openAuth = action.payload;
         },
         setSideWidth: (state, action) => {
             state.sideWidth = action.payload;

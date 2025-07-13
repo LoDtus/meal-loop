@@ -1,7 +1,11 @@
-export default function ResetPassword() {
-    return (
-        <div>
+"use client";
+import ResetPassword from "@/fragments/auth/components/ResetPassword";
 
-        </div>
+export default function ResetPasswordPage() {
+    return (
+        <ResetPassword
+            mode="full-screen"
+            setOpenModal={null}
+        />
     );
 };

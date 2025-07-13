@@ -12,6 +12,7 @@ const arr = [
 ]
 
 // Sử dụng react-virtuoso để render tin nhắn
+// Sửa lại item với ava ở cuối, tên ở cuối
 export default function MessagesList() {
     const messageListRef = useRef<HTMLDivElement>(null);
 
@@ -60,6 +61,8 @@ export default function MessagesList() {
                                 sendByMe={false}
                                 isSimpleMessage={false}
                             />
+                            : message?.type === "SOUND"
+                            ? <></>
                             : message?.type === "FILE"
                             ? <TextMessage
                                 message={message}

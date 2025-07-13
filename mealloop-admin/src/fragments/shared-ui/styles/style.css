@@ -1,0 +1,22 @@
+/* -------------------- Navigation Bar -------------------- */
+/* Scroll Bar */
+.nav-tabs {
+    direction: rtl;
+}
+.nav-tabs > * {
+    direction: ltr;
+}
+.nav-tabs::-webkit-scrollbar { /* Độ rộng của thanh scroll */
+    width: 3px;
+}
+.nav-tabs::-webkit-scrollbar-track { /* Track (phần nền của scrollbar) */
+    background: #f2f2f2;
+    border-radius: 10px;
+}
+.nav-tabs::-webkit-scrollbar-thumb { /* Thumb (phần kéo được) */
+    background: #bdbdbd;
+    border-radius: 10px;
+}
+.nav-tabs::-webkit-scrollbar-thumb:hover { /* Hover thumb */
+    background: #8b8b8b;
+}

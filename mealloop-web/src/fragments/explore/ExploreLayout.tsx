@@ -31,7 +31,6 @@ export default function ExploreLayout() {
     const posts = useSelector((state: RootState) => state.post.posts);
     const status = useSelector((state: RootState) => state.post.status);
 
-    const [openAuth, setOpenAuth] = useState(false); // Lưu trạng thái bật/tắt của Auth Popup
     const [masonryWidth, setMasonryWidth] = useState(0); // Lưu chiều rộng của Masonry
     const masonryRef = useRef<HTMLDivElement | null>(null);
     const masonryStatus = useRef(null); // Lưu lại trạng thái của Masonry
@@ -119,45 +118,35 @@ export default function ExploreLayout() {
     // thì tạo lại scroll (nháy lần 2 để thêm scroll). Giải pháp là tạo 1 chiếm chỗ scroll, nếu dữ liệu đã được get đủ rồi
     // thì ẩn div này đi
     return (
-        <>
-            <div className="w-full h-full">
-                <button onClick={() => log()}>
-                    log
-                </button>
-                <button onClick={() => setOpenAuth(true)}>
-                    Đăng nhập
-                </button>
-                <div>{masonryWidth}</div>
+        <div className="w-full h-full">
+            <button onClick={() => log()}>
+                log
+            </button>
+            <div>{masonryWidth}</div>
 
-                <div className="px-1">
-                    <div ref={masonryRef} className="w-full py-1">
-                        <MasonryInfiniteGrid
-                            ref={masonryStatus}
-                            column={columns}
-                            align="start"
-                            loading={<div className="loading">Loading...</div>}
-                            onRequestAppend={handleGetMorePosts}
-                            useRecycle={false} // Duy trì DOM trong mọi trường hợp, không bị thu hồi như Recycle View
-                        >
-                            {posts.map((item, index) => {
-                                return (
-                                    <PostItem
-                                        data-grid-groupkey={item.groupKey}
-                                        key={item.key}
-                                        num={item.key}
-                                        masonryWidth={masonryWidth}
-                                        columns={columns}
-                                    />
-                            )})}
-                        </MasonryInfiniteGrid>
-                    </div>
+            <div className="px-1">
+                <div ref={masonryRef} className="w-full py-1">
+                    <MasonryInfiniteGrid
+                        ref={masonryStatus}
+                        column={columns}
+                        align="start"
+                        loading={<div className="loading">Loading...</div>}
+                        onRequestAppend={handleGetMorePosts}
+                        useRecycle={false} // Duy trì DOM trong mọi trường hợp, không bị thu hồi như Recycle View
+                    >
+                        {posts.map((item, index) => {
+                            return (
+                                <PostItem
+                                    data-grid-groupkey={item.groupKey}
+                                    key={item.key}
+                                    num={item.key}
+                                    masonryWidth={masonryWidth}
+                                    columns={columns}
+                                />
+                        )})}
+                    </MasonryInfiniteGrid>
                 </div>
             </div>
-
-            {openAuth && <AuthLayout
-                setOpenAuth={setOpenAuth}
-                mode="overlay"
-            />}
-        </>
+        </div>
     );
 };

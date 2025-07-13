@@ -1,6 +1,0 @@
-- hoàn toàn có thể thay đổi hoặc nâng cấp các service trong tương lai nếu cảm thấy phù hợp do các service này vốn dĩ không phụ thuộc lẫn nhau. chỉ cần giữ nguyên api là được, còn lại thích dùng công nghệ nào cũng được
-
-- Giải thích các thư mục:
-	+ scripts: Script CI/CD, migration, khởi động
-	+ infra: Hạ tầng: docker, k8s, config server...
-	+ shared-lib: Các module dùng chung

@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { LEFT_SIDE_TABS } from "@/lib/configs/contants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
+import propertiesSlice from "@/lib/redux/slices/propertiesSlices";
 
 export default function LeftSide() {
     const t = useTranslations();
+    const dispatch = useDispatch();
     const pathname = usePathname();
     const headerHeight = useSelector((state: RootState) => state.properties.headerHeight);
     const sideWidth = useSelector((state: RootState) => state.properties.sideWidth);
@@ -43,6 +45,18 @@ export default function LeftSide() {
                     </Link>
                 )
             })}
+            <button
+                className="mt-2 border rounded-md py-2 duration-200 active:scale-90"
+                onClick={() => dispatch(propertiesSlice.actions.setOpenAuth(true))}
+            >
+                Đăng nhập overlay
+            </button>
+            <Link href="/auth/sign-in"
+                className="mt-1 border rounded-md py-2 duration-200 active:scale-90 text-center"
+                onClick={() => {}}
+            >
+                Đăng nhập Link
+            </Link>
         </div>
     );
 };

@@ -5,6 +5,7 @@ export default function SignInPage() {
     return (
         <SignIn
             mode="full-screen"
+            setOpenModal={null}
         />
     );
 };

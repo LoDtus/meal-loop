@@ -16,7 +16,7 @@ export const pushNotify = (
     type: 'success' | 'error' | 'warning' | 'info',
     description: string,
     placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' = 'topRight',
-    messageNotify: string | null
+    messageNotify: string | null = null
 ) => {
     if (!notificationApi) return;
 

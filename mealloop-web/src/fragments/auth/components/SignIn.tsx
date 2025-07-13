@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faUser,
-    faUnlockKeyhole,
-} from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Checkbox, Input, Typography } from 'antd';
+import Image from "next/image";
+import { useDispatch } from "react-redux";
+import propertiesSlice from "@/lib/redux/slices/propertiesSlices";
 
 const { Text } = Typography;
 
@@ -16,6 +16,7 @@ export default function SignIn({
     mode,
     setOpenModal,
 }) {
+    const dispatch = useDispatch();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
@@ -24,73 +25,97 @@ export default function SignIn({
         console.log(username)
     }, [username]);
 
+    const startManualSignIn = async() => {
+        if (!username) return;
+        if (!password) return;
+
+        const response = "";
+    };
+
+    const startSignInWithGoogle = async() => {
+
+    };
+
     return (
-        <div className="bg-white p-5 rounded-md flex flex-col">
-            <span className="font-semibold text-center">Đăng nhập</span>
-            <span>Nhập thông tin của bạn</span>
-
-            <div className="flex items-center py-1 px-2 mb-1 rounded-md bg-[#f5f5f5]">
-                <div className="pl-2">
-                    <FontAwesomeIcon icon={faUser} />
-                </div>
-                <Input
-                    variant="borderless"
-                    placeholder="Tên tài khoản"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    showCount
+        <div className="w-[400px] p-5 bg-white shadow-lg rounded-md flex flex-col">
+            <div className="w-full flex justify-end">
+                <FontAwesomeIcon
+                    icon={faXmark}
+                    className="mb-1 px-[2px] cursor-pointer duration-200 active:scale-90"
+                    onClick={() => dispatch(propertiesSlice.actions.setOpenAuth(false))}
                 />
             </div>
+            <span className="font-semibold text-center text-2xl">Đăng nhập</span>
+            <span className="text-center text-sm !mb-5">Nhập thông tin tài khoản của bạn</span>
 
-            <div className="flex items-center py-1 px-2 mb-1 rounded-md bg-[#f5f5f5]">
-                <div className="pl-2">
-                    <FontAwesomeIcon icon={faUser} />
-                </div>
-                <Input.Password
-                    variant="borderless"
-                    placeholder="Mật khẩu"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    iconRender={(visible) => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
-                />
-            </div>
+            <span className="font-semibold text-[15px]">Tên đăng nhập</span>
+            <Input
+                placeholder="Tên tài khoản"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                allowClear
+            />
 
-            <div className="flex justify-between items-center">
-                <Checkbox onClick={(e) => setRememberMe(e.target.checked)}>
+            <span className="font-semibold text-[15px] mt-2">Mật khẩu</span>
+            <Input.Password
+                placeholder="Mật khẩu"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                iconRender={(visible) => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
+            />
+
+            <div className="my-1 flex justify-between items-center">
+                <Checkbox className="!pb-[1px]" onClick={(e) => setRememberMe(e.target.checked)}>
                     Duy trì đăng nhập
                 </Checkbox>
-                <Link href='/access/forgot-password' className='text-blue'>
+                { mode === "overlay"
+                ? <Button className='!px-0' type="link" onClick={() => setOpenModal("forgot-password")}>
+                    Quên mật khẩu
+                </Button>
+                : <Link href='/auth/forgot-password' className='text-blue'>
                     <Button className='!px-0' type="link">
                         Quên mật khẩu
                     </Button>
-                </Link>
+                </Link> }
             </div>
 
             <Button
-                className="mb-1"
-                onClick={() => {}}
+                className="mb-1 !font-semibold"
+                type="primary"
+                onClick={() => startManualSignIn()}
             >
                 Đăng nhập
             </Button>
 
             <Button
-                onClick={() => {}}
+                className="mb-2 !font-medium !py-2"
+                onClick={() => startSignInWithGoogle()}
             >
+                <Image
+                    className="h-full w-auto"
+                    src="/icons/google-64x64.png"
+                    alt="Google Icon"
+                    width={64}
+                    height={64}
+                />
                 Đăng nhập bằng Google
             </Button>
 
-            {
-                mode === "overlay"
-                ? <button
+            <div className="flex justify-center items-center">
+                <Text>Bạn chưa có tài khoản?</Text>
+                { mode === "overlay"
+                ? <Text
+                    className="ml-1 !text-blue cursor-pointer duration-200 active:scale-90"
                     onClick={() => setOpenModal("sign-up")}
-                    className=""
                 >
-                    Sign up
-                </button>
+                    Đăng ký tại đây
+                </Text>
                 : <Link href="/auth/sign-up" prefetch={true}>
-                    Đăng ký
-                </Link>
-            }
+                    <Text className="ml-1 !text-blue cursor-pointer duration-200 active:scale-90">
+                        Đăng ký tại đây
+                    </Text>
+                </Link> }
+            </div>
         </div>
     );
 };

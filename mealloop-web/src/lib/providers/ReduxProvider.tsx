@@ -17,6 +17,7 @@ import NotificationMenu from "@/fragments/notification/NotificationMenu";
 import CartMenu from "@/fragments/cart/components/CartMenu";
 import Footer from "@/fragments/shared-ui/Footer";
 import { PATHNAME_WITHOUT_FOOTER } from "../configs/contants";
+import AuthLayout from "@/fragments/auth/AuthLayout";
 
 type ReduxProviderProps = {
     children: ReactNode;
@@ -27,13 +28,7 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
     const dispatch = useDispatch();
     const { width } = useWindowDimensions();
 
-    const headerHeight = useSelector((state: RootState) => state.properties.headerHeight);
-    const distanceFromRightHeader = useSelector((state: RootState) => state.properties.distanceFromRightHeader);
-    const sideWidth = useSelector((state: RootState) => state.properties.sideWidth);
-    const openCartMenu = useSelector((state: RootState) => state.properties.openCartMenu);
-    const openNotifycationMenu = useSelector((state: RootState) => state.properties.openNotifycationMenu);
-    const openProfileMenu = useSelector((state: RootState) => state.properties.openProfileMenu);
-
+    const properties = useSelector((state: RootState) => state.properties);
     const language = useSelector((state: RootState) => state.setting.language);
     const messages = language === "vi" ? viMessages : enMessages;
 
@@ -59,14 +54,14 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
                 ? <> { children } </>
                 : <>
                     <Header/>
-                    <div className="flex" style={{ marginTop: headerHeight }}>
+                    <div className="flex" style={{ marginTop: properties?.headerHeight }}>
                         <LeftSide/>
                         {/* <div style={{ minWidth: `${sideWidth}px` }}></div> */}
                         <div
                             className="w-full flex flex-col"
                             style={{
-                                paddingLeft: `${sideWidth}px`,
-                                paddingRight: `${sideWidth + 1}px`,
+                                paddingLeft: `${properties?.sideWidth}px`,
+                                paddingRight: `${properties?.sideWidth + 1}px`,
                             }}
                         >
                             { children }
@@ -76,9 +71,13 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
                         <RightSide/>
                     </div>
 
-                    { openCartMenu && <CartMenu headerHeight={headerHeight} distanceFromRightHeader={distanceFromRightHeader}/> }
-                    { openNotifycationMenu && <NotificationMenu headerHeight={headerHeight}/> }
-                    { openProfileMenu && <ProfileMenu headerHeight={headerHeight}/> }
+                    { properties?.openCartMenu && <CartMenu headerHeight={properties?.headerHeight} distanceFromRightHeader={properties?.distanceFromRightHeader}/> }
+                    { properties?.openNotifycationMenu && <NotificationMenu headerHeight={properties?.headerHeight}/> }
+                    { properties?.openProfileMenu && <ProfileMenu headerHeight={properties?.headerHeight}/> }
+
+                    {properties?.openAuth && <AuthLayout
+                        mode="overlay"
+                    />}
                 </>
             }
         </NextIntlClientProvider>

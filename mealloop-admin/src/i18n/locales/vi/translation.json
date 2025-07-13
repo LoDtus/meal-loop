@@ -16,5 +16,13 @@
         "trash": "Đã xóa",
         "setting": "Cài đặt",
         "profile": "Thông tin cá nhân"
+    },
+    "userManagement": {
+        "infor": {
+            "active": {
+                "active": "Kích hoạt",
+                "disable": "Vô hiệu hóa"
+            }
+        }
     }
 }

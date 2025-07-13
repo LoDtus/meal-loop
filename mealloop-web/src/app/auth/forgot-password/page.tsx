@@ -1,7 +1,11 @@
-export default function ForgotPassword() {
-    return (
-        <div>
+"use client";
+import ForgotPassword from "@/fragments/auth/components/ForgotPassword";
 
-        </div>
+export default function ForgotPasswordPage() {
+    return (
+        <ForgotPassword
+            mode="full-screen"
+            setOpenModal={null}
+        />
     );
 };
