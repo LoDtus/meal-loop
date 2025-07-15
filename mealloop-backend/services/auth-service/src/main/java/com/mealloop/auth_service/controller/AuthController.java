@@ -1,12 +1,150 @@
 package com.mealloop.auth_service.controller;
 
+import com.mealloop.auth_service.dto.SignInRequest;
+import com.mealloop.auth_service.dto.SignUpRequest;
+import com.mealloop.auth_service.entity.Auth;
+import com.mealloop.auth_service.service.AuthService;
+import com.mealloop.common.dto.ApiResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
+    private final AuthService authService;
 
+    @GetMapping("/check-exists/{usernameOrEmail}")
+    public ResponseEntity<?> checkUsernameOrEmailExists(@PathVariable String usernameOrEmail) {
+//        Profile profile = profileService.findByUsernameOrEmail(usernameOrEmail);
+//        return ResponseEntity.ok(profile != null);
+        return ResponseEntity.ok(authService.findAll());
+    }
+
+    @PostMapping("/sign-in")
+    public ResponseEntity<?> signIn(
+            @RequestBody SignInRequest request,
+            HttpServletResponse response
+    ) {
+        Auth authExists = authService.findByUsernameOrEmail(request.getUsernameOrEmail());
+        if (authExists == null) {
+            ApiResponse<Void> error = ApiResponse.<Void>builder()
+                    .statusCode(404)
+                    .message("User not found")
+                    .build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        }
+
+        //...
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("Sign in successfully")
+//                .data()
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> signUp(
+            @RequestBody SignUpRequest request,
+            HttpServletResponse response
+    ) {
+        Auth authExists = authService.findByUsernameOrEmail(request.getUsernameOrEmail());
+        if (authExists != null) {
+            ApiResponse<Void> error = ApiResponse.<Void>builder()
+                    .statusCode(404)
+                    .message("Username or email already exists")
+                    .build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        }
+
+        // ...
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("Sign up successfully")
+//                .data()
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @GetMapping("/sign-out")
+    public ResponseEntity<?> signOut(HttpServletRequest request) {
+//        String accessToken = jwtService.extractTokenFromCookie(request, "accessToken");
+//        String id = jwtService.extractId(accessToken);
+//
+//        Auth auth = authService.findById(id);
+//        if (auth == null) {
+//            ApiResponse<Void> error = ApiResponse.<Void>builder()
+//                    .statusCode(404)
+//                    .message("User not found")
+//                    .build();
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+//        }
+
+        // ...
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("User signed out successfully")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @GetMapping("/forgot-password/{usernameOrEmail}")
+    public ResponseEntity<ApiResponse<Void>> forgotPassword(@PathVariable String usernameOrEmail) {
+        Auth auth = authService.findByUsernameOrEmail(usernameOrEmail);
+        if (auth == null) {
+            ApiResponse<Void> error = ApiResponse.<Void>builder()
+                    .statusCode(404)
+                    .message("Your profile not found")
+                    .build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        }
+
+        //...
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("Reset password email was sent")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @GetMapping("/check-reset-password-token/{token}")
+    public ResponseEntity<ApiResponse<Void>> checkResetPasswordToken(@PathVariable String token) {
+        // ...
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("Reset password token is valid")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @PostMapping("/reset-password/{password}")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(@PathVariable String password) {
+        // ...
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("Password changed successfully")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @PutMapping("/change-password/{oldPassword}/to/{newPassword}")
+    public ResponseEntity<?> changePassword(
+            HttpServletRequest request,
+            @PathVariable String oldPassword,
+            @PathVariable String newPassword
+    ) {
+//        String accessToken = jwtService.extractTokenFromCookie(request, "accessToken");
+//        String id = jwtService.extractId(accessToken);
+//        Auth auth = authService.findById(id);
+
+        ApiResponse<Void> apiResponse = ApiResponse.<Void>builder()
+                .message("Password changed successfully")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
 }

@@ -9,6 +9,7 @@ public interface AuthService {
     Auth findById(String authId);
     Auth findByUsername(String username);
     Auth findByEmail(String email);
+    Auth findByUsernameOrEmail(String usernameOrEmail);
     Auth save(Auth auth);
     Boolean deleteById(String authId);
 }

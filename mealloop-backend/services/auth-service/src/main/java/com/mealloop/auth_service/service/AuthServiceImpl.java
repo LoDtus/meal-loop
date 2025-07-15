@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,12 +25,17 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public Auth findByUsername(String username) {
-        return repository.findById(username).orElse(null);
+        return repository.findByUsername(username).orElse(null);
     }
 
     @Override
     public Auth findByEmail(String email) {
-        return repository.findById(email).orElse(null);
+        return repository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public Auth findByUsernameOrEmail(String usernameOrEmail) {
+        return repository.findByUsernameOrEmail(usernameOrEmail).orElse(null);
     }
 
     @Override

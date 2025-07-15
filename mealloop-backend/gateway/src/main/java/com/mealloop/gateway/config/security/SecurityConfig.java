@@ -43,10 +43,10 @@ public class SecurityConfig {
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(
                                 "/ws/**",
-                                "/auth/**",
-                                "/post/get",
-                                "/store/get",
-                                "/product/get"
+                                "/api/auth/**",
+                                "/api/post/get",
+                                "/api/store/get",
+                                "/api/product/get"
                         ).permitAll()
                         .anyExchange().authenticated() // Mọi endpoint khác thì yêu cầu xác thực
                 );

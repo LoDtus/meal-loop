@@ -1,6 +1,5 @@
 package com.mealloop.auth_service.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mealloop.auth_service.enums.AuthProvider;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,8 +22,6 @@ public class AuthWithoutPassword {
     private Boolean active;
     private Boolean emailVerified;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX", shape = JsonFormat.Shape.STRING, timezone = "UTC")
     private OffsetDateTime createdAt;
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX", shape = JsonFormat.Shape.STRING, timezone = "UTC")
     private OffsetDateTime updatedAt;
 }

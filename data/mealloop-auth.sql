@@ -2,17 +2,8 @@ DROP DATABASE IF EXISTS `mealloop-auth`;
 CREATE DATABASE IF NOT EXISTS `mealloop-auth`;
 USE `mealloop-auth`;
 
-CREATE TABLE `role` (
-    `role_id` CHAR(31) PRIMARY KEY,
-    `code` VARCHAR(100) NOT NULL,
-    `role` VARCHAR(100) NOT NULL,
-    `hidden` BOOLEAN NOT NULL,
-    `description` VARCHAR(200) NOT NULL
-);
-
 CREATE TABLE `auth` (
-    `auth_id` CHAR(31) PRIMARY KEY,
-    `role_id` CHAR(31) NOT NULL,
+    `user_id` CHAR(31) PRIMARY KEY, -- user-(26 ký tự)
     `username` VARCHAR(100) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
     `password` VARCHAR(100) NOT NULL,
@@ -21,5 +12,21 @@ CREATE TABLE `auth` (
     `email_verified` BOOLEAN NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (`role_id`) REFERENCES `role`(`role_id`) ON UPDATE CASCADE
+    UNIQUE (`username`, `email`)
+);
+
+CREATE TABLE `role` (
+    `role_id` CHAR(31) PRIMARY KEY, -- role-(26 ký tự)
+    `code` VARCHAR(100) NOT NULL,
+    `name` VARCHAR(100) NOT NULL,
+    `hidden` BOOLEAN NOT NULL,
+    `description` VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE `user_role_mapping` (
+	`user_id` CHAR(31) NOT NULL,
+    `role_id` CHAR(31) NOT NULL,
+    PRIMARY KEY (`user_id`, `role_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `auth`(`user_id`) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (`role_id`) REFERENCES `role`(`role_id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
