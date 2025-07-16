@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignUpRequest {
-    private String usernameOrEmail;
+    private String email;
+    private String username;
+    private String fullName;
     private String password;
     private String rememberMe;
+    // Các thuộc tính khác nếu có
 }

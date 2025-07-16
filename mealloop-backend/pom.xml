@@ -16,6 +16,7 @@
     <description>Meal Loop Backend</description>
 
     <modules>
+        <module>gateway</module>
         <module>common-library</module>
         <module>services/auth-service</module>
     </modules>
@@ -48,6 +49,8 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.30</version>
+                <scope>provided</scope>
+                <optional>true</optional>
             </dependency>
 
             <!-- ULID -->
@@ -55,6 +58,23 @@
                 <groupId>com.github.f4b6a3</groupId>
                 <artifactId>ulid-creator</artifactId>
                 <version>5.2.3</version>
+            </dependency>
+
+            <!-- JWT -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>0.11.5</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>0.11.5</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>0.11.5</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -71,6 +91,13 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <release>${java.version}</release>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>1.18.30</version>
+                            </path>
+                        </annotationProcessorPaths>
                     </configuration>
                 </plugin>
 
